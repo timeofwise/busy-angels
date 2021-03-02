@@ -4,6 +4,7 @@ body {
 #navbar {
     background-color: transparent !important;
     position: fixed !important;
+    top:0 !important;
     z-index:800!important;
 }
 
@@ -172,8 +173,8 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #hero {
-    width: 100%;
-    height: 100vh;
+    width: 100% !important;
+    height: 100vh !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -199,7 +200,7 @@ a.article:hover {
     margin: 0 0 10px 0;
     font-size: 72px;
     font-weight: 400;
-    line-height: 84px;
+    line-height: 80px;
     text-transform: uppercase;
     color: #fff;
     text-shadow: 0px 0 4px black;
