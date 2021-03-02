@@ -224,3 +224,11 @@ a.article:hover {
     position: relative;
     margin-bottom: -90px;
 }
+
+/* ---------------------------------------------------
+    BLOG STYLE
+----------------------------------------------------- */
+
+#blog_article {
+    padding: 0px !important;
+}
