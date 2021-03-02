@@ -230,5 +230,18 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #blog_article {
-    padding: 0px !important;
+    margin-right: 2px !important;
+    margin-left: 2px !important;
+    box-shadow: 0px 0 12px gray !important;
+}
+
+#blog_article:hover {
+    background: #fafafa;
+}
+
+#blog_article_thumbnail {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
 }
