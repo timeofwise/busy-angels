@@ -267,3 +267,16 @@ a.article:hover {
     background-size:cover;
     background-position:center center;
 }
+
+
+/* ---------------------------------------------------
+    BLOG-SIDE BAR STYLE
+----------------------------------------------------- */
+
+.sidebar_title {
+    color: #204355;
+}
+
+.sidebar_item {
+    box-shadow: 0px 0 12px gray !important;
+}
