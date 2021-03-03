@@ -233,7 +233,7 @@ a.article:hover {
 #blog_article {
     margin-right: 2px !important;
     margin-left: 2px !important;
-    box-shadow: 0px 0 12px gray !important;
+    box-shadow: 0px 0 12px #CAC9D1 !important;
     transition: transform .35s;
     -o-transition: transform .35s;
     -moz-transition: transform .35s;
@@ -278,5 +278,5 @@ a.article:hover {
 }
 
 .sidebar_item {
-    box-shadow: 0px 0 12px gray !important;
+    box-shadow: 0px 0 12px #CAC9D1 !important;
 }
