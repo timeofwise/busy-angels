@@ -7,54 +7,20 @@
     <div style="height:70px!important"></div>
     <div class="row">
         <div class="col-sm-8">
+            {% for article in articles %}
             <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
+                    <strong class="d-inline-block mb-2 text-success">{{ article.book.sub_category }}:{{ article.book }}</strong>
+                    <h3 class="mb-0">{{ article.title_text }}</h3>
+                    <div class="mb-1 text-muted"><i id="icon-blog" class="far fa-user"></i><span id="profile-blog">&nbsp;{{ article.written_by }}</span><i id="icon-blog" class="far fa-clock"></i><span id="profile-blog">&nbsp;{{ article.created|date:'Y/n/j' }}</span><i id="icon-blog" class="far fa-comment-dots"></i><span id="profile-blog">&nbsp;12 Comments</span></div>
                     <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                     <a href="#" type="button" class="btn btn-sm btn-outline-dark stretched-link" style="width:90px;margin-top:18px;border-radius:15px">더 보기</a>
                 </div>
                 <div id="blog_article_thumbnail" class="col-auto d-none d-lg-block">
-                    <div id="thumbnail_img" style="background-image:url('/static/img/blog/sample_blog_article.jpg')"></div>
+                    <div id="thumbnail_img" style="background-image:url('{{article.title_photo.url}}')"></div>
                 </div>
             </div>
-            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Continue reading</a>
-                </div>
-                <div id="blog_article_thumbnail" class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-            </div>
-            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Continue reading</a>
-                </div>
-                <div id="blog_article_thumbnail" class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-            </div>
-            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Continue reading</a>
-                </div>
-                <div id="blog_article_thumbnail" class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="col-sm-4" style="padding-left:20px;padding-right:20px">
             <div class="sidebar_item mb-4" style="padding:20px">

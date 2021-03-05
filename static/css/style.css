@@ -268,6 +268,14 @@ a.article:hover {
     background-position:center center;
 }
 
+#icon-blog {
+    color:#7EB5D0;
+}
+
+#profile-blog {
+    font-weight: 300;
+    margin-right: 20px;
+}
 
 /* ---------------------------------------------------
     BLOG-SIDE BAR STYLE
