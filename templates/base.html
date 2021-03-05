@@ -47,10 +47,13 @@
             <a id="sidebar_menu" class="nav-link" href="#">소개</a>
         </li>
         <li>
-            <a id="sidebar_menu" class="nav-link" href="#">경제와 함께</a>
+            <a id="sidebar_menu" class="nav-link" href="{% url 'assets' %}">경제와 함께</a>
         </li>
         <li>
             <a id="sidebar_menu" class="nav-link" href="{% url 'books' %}">책과 함께</a>
+        </li>
+        <li>
+            <a id="sidebar_menu" class="nav-link" href="{% url 'asset_upload' %}">UPLOAD CSV</a>
         </li>
         <li>
             <a id="sidebar_menu" class="nav-link" href="#">로그인</a>
