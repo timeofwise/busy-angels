@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from el_pagination.decorators import page_template
+#from el_pagination.decorators import page_template
 from django.urls import reverse_lazy
 from datetime import datetime, timedelta
 import time
