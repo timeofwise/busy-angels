@@ -6,15 +6,25 @@
 <div class="container">
     <div style="height:70px!important"></div>
     <div class="row">
+        <div class="col mt-3 mb-5 banner">
+        배너글을 준비중입니다.
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-8">
             {% for article in articles %}
-            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative" style="background-color:white!important">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">{{ article.book.sub_category }}:{{ article.book }}</strong>
-                    <h3 class="mb-0">{{ article.title_text }}</h3>
+                    <!--
+                    <strong class="d-inline-block mb-2 text-success">{{ article.book.sub_category }}:{{ article.book }}</strong>-->
+                    <div class="mb-2">
+                        <span class="badge rounded-pill bg-warning text-dark tag">{{ article.book.sub_category }}</span>
+                        <span class="badge rounded-pill bg-warning text-dark tag">{{ article.book }}</span>
+                    </div>
+                    <h3 class="mt-1 mb-1 title_text">{{ article.title_text }}</h3>
                     <div class="mb-1 text-muted"><i id="icon-blog" class="far fa-user"></i><span id="profile-blog">&nbsp;{{ article.written_by }}</span><i id="icon-blog" class="far fa-clock"></i><span id="profile-blog">&nbsp;{{ article.created|date:'Y/n/j' }}</span><i id="icon-blog" class="far fa-comment-dots"></i><span id="profile-blog">&nbsp;12 Comments</span></div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" type="button" class="btn btn-sm btn-outline-dark stretched-link" style="width:90px;margin-top:18px;border-radius:15px">더 보기</a>
+                    <p class="mt-1 mb-auto sub_text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" type="button" class="btn btn-sm btn-outline-dark " style="width:90px;margin-top:18px;border-radius:15px">더 보기</a>
                 </div>
                 <div id="blog_article_thumbnail" class="col-auto d-none d-lg-block">
                     <div id="thumbnail_img" style="background-image:url('{{article.title_photo.url}}')"></div>
@@ -28,6 +38,7 @@
                 <form>
                     <input class="form-control" type="text" style="display:inline;width:85%;position:relative;top:0;border-radius:0"><button type="submit" class="btn btn-info" style="display:inline;width:15%;position:relative;bottom:3px;border-radius:0"><i class="fa fa-search" style="color:white"></i></button>
                 </form>
+                <a href="{% url 'post' %}" class="btn btn-success mt-2">POST AN ARTICLE</a>
             </div>
             <div class="sidebar_item mb-4" style="padding:20px">
                 <h4 class="sidebar_title">Category</h4>

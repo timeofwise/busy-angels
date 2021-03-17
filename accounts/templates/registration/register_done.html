@@ -1,0 +1,16 @@
+{% extends 'auth.html' %}
+{% block title %}로그인 -{% endblock %}
+
+{% block content %}
+<section id="hero" style="background-image: url('/static/img/auth/auth-3.jpg');">
+
+    <div class="hero-container" data-aos="fade-up">
+        <h1>{{ new_user.username }}님, 정보 등록이 완료되었습니다.</h1>
+        <h2>건전한 소통 문화를 만들어가는 좋은 이웃이 되길 희망합니다.</h2>
+        <a class="btn btn-outline-primary mt-2 mb-2" href="{% url 'login'%}" style="display:inline;">로그인 화면으로 이동</a>
+        <a class="btn btn-outline-light mt-2 mb-2" href="{% url 'home'%}" style="display:inline">메인 페이지로 이동</a>
+    </div>
+
+</section>
+
+{% endblock %}

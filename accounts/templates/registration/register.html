@@ -1,0 +1,73 @@
+{% extends 'auth.html' %}
+{% block title %}로그인 -{% endblock %}
+
+{% block content %}
+<section id="hero" style="background-image: url('/static/img/auth/auth-2.jpg');">
+    <div class="modal fade show" id="exampleModal" data-bs-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="false" style="display:block">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel" style="color:#0E4596;font-weight:300">간편 ID 등록</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" autocomplete="off">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <table class="table table-borderless">
+                            <tbody style="font-weight:300!important">
+                                <tr>
+                                    <td>
+                                        <label for="id_username">ID:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="username" maxlength="150" required="" id="id_username">
+                                    </td>
+                                    <td>{{ form.username.errors }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td colspan="2">
+                                        (특수문자는 숫자 그리고 @/./+/-/_만 가능합니다.)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="id_email">Email:</label>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="email" name="email" maxlength="254" id="id_email">
+                                    </td>
+                                    <td>{{ form.email.errors }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="id_password">비밀번호:</label>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="password" name="password" required="" id="id_password">
+                                    </td>
+                                    <td>{{ form.password.errors }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="id_password2">비밀번호 확인:</label>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="password" name="password2" required="" id="id_password2">
+                                    </td>
+                                    <td>{{ form.password2.errors }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input class="btn btn-primary" type="submit" value="등록" style="float:right;font-weight:300">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

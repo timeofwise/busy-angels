@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% block title %}주식거래 등록{% endblock %}
+
+{% block content %}
+<div style="height:70px!important"></div>
+<div class="row form-group">
+    <div class="col-lg-6">
+        <button class="btn btn-block btn-primary" id="insert_btn" data-bs-toggle="modal" data-bs-target="#insert_data">INSERT</button>
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-block btn-primary" id="update_btn">EDIT ALL</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>날짜</th>
+                    <th>구분</th>
+                    <th>주식명</th>
+                    <th>거래통화</th>
+                    <th>거래가격</th>
+                    <th>거래수량</th>
+                    <th>기준통화</th>
+                    <th>기준가격</th>
+                    <th>데이터삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ stock.date|date:'y/m/d' }}</td>
+                    <td>{{ stock.io }}</td>
+                    <td>{{ stock.stock }}</td>
+                    <td>{{ stock.currency_trade }}</td>
+                    <td>{{ stock.price_trade }}</td>
+                    <td>{{ stock.amount }}</td>
+                    <td>{{ stock.stock.currency }}</td>
+                    <td>{{ stock.price_std }}</td>
+                    <td class="btn-td-block"><button class="btn btn-block btn-delete btn-danger">Delete</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="insert_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:990!important">
+    <div class="modal-dialog" style="z-index:991!important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Insert Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>거래 일자: </label>
+                    <input type="text" class="form-control" id="ins_date" name="date" placeholder="날짜를 선택하세요." autocomplete="off"/>
+                </div>
+                <div class="form-group">
+                    <label>주식명: </label>
+                    <select name="stock" class="form-control" id="ins_stock">
+                        <option>거래 주식을 선택하세요.</option>
+                        <option>-----------------</option>
+                        {% for name in names %}
+                        <option value="{{name.id}}">{{ name.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group mb-4 mt-4">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>거래 구분:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="form-check-label">매수</label>
+                            <input type="radio" class="form-check-input" style="margin-right:20px" id="ins_io_buy" name="io" value="1">
+                            <label class="form-check-label">매도</label>
+                            <input type="radio" class="form-check-input" id="ins_io_sell" name="io" value="-1">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group mb-4 mt-4">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>거래 통화:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="form-check-label">KRW</label>
+                            <input type="radio" class="form-check-input" style="margin-right:20px" id="ins_currency_trade_krw" name="currency_trade" value="1">
+                            <label class="form-check-label">USD</label>
+                            <input type="radio" class="form-check-input" id="ins_currency_trade_usd" name="currency_trade" value="2">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label>거래 단가: </label>
+                    <input type="number" name="price_trade" class="form-control" id="ins_price_trade" placeholder="거래 단가를 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label>기준 가격: </label>
+                    <input type="number" name="price_std" class="form-control" id="ins_price_std" placeholder="이종통화 거래인 경우, 실제 가격을 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label>거래 수량: </label>
+                    <input type="number" name="amount" class="form-control" id="ins_amount" placeholder="거래 수량을 입력하세요.">
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" name="submit" class="btn btn-sm btn-info btn-insert-data" value="INSERT DATA">
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-success" id="ins_success" style="display:none">
+                    </div>
+                    <div class="alert alert-danger" id="ins_error" style="display:none">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#ins_date").datepicker();
+    });
+</script>
+<script>
+    $(".btn-insert-data").click(function(){
+        var date = $("#ins_date").val();
+        var stock = parseInt($("#ins_stock").val());
+        var io = parseInt($("input[type='radio'][name='io']:checked").val());
+        var currency_trade = parseInt($("input[type='radio'][name='currency_trade']:checked").val());
+        var price_trade = parseFloat($("#ins_price_trade").val());
+        var amount = parseFloat($("#ins_amount").val());
+        var price_std = parseFloat($("#ins_price_std").val());
+        if(date == ""){
+            $("#ins_error").text("Please enter date.")
+            $("#ins_error").show()
+            return;
+        }
+        else if(stock == ""){
+            $("#ins_error").text("Please enter stock.")
+            $("#ins_error").show()
+            return;
+        }
+        else if(io == ""){
+            $("#ins_error").text("Please select buy/sell.")
+            $("#ins_error").show()
+            return;
+        }
+        else if(currency_trade == ""){
+            $("#ins_error").text("Please select KRW/USD.")
+            $("#ins_error").show()
+            return;
+        }
+        else if(price_trade == ""){
+            $("#ins_error").text("Please enter traded unit price.")
+            $("#ins_error").show()
+            return;
+        }
+        else if(amount == ""){
+            $("#ins_error").text("Please enter traded stock amount.")
+            $("#ins_error").show()
+            return;
+        }
+        else if(price_std == ""){
+            $("#ins_error").text("Please enter traded stock price based on actual currency.")
+            $("#ins_error").show()
+            return;
+        }
+        else{
+            console.log(date);
+            console.log(stock);
+            console.log(io);
+            console.log(currency_trade);
+            console.log(price_trade);
+            console.log(amount);
+            console.log(price_std);
+            $.ajax({
+                url:"{% url 'insert_stock_data' %}",
+                type: "POST",
+                data: {date:date,stock:stock,io:io,currency_trade:currency_trade,price_trade:price_trade,amount:amount,price_std:price_std}
+            })
+            .done(function(response){
+                console.log(response);
+            })
+            .fail(function(){
+                $("#ins_success").hide();
+                $("#ins_error").text('Something went wrong.');
+                $("#ins_error").show();
+                console.log('Error');
+            })
+        }
+    })
+</script>
+{% endblock %}

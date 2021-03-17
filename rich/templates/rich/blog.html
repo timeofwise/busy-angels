@@ -1,28 +1,116 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Assets{% endblock %}
 
 {% block content %}
+<nav class="navbar navbar-light bg-light fixed-bottom d-block d-sm-none">
+    <div class="container">
+        <a id="bottom_menu" class="navbar-brand" href="#">Search</a>
+        <a id="bottom_menu" class="navbar-brand" href="#">Category</a>
+        <a id="bottom_menu" class="navbar-brand" href="#">Tags</a>
+        <a id="bottom_menu" class="navbar-brand" href="#">Comments</a>
+        <a id="bottom_menu" class="navbar-brand" href="#">Navbar</a>
+    </div>
+</nav>
+
+
 <div class="container">
     <div style="height:70px!important"></div>
     <div class="row">
         <div class="col-sm-8">
-            {% for article in assets %}
-            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+            <div class="infinite-container">
+            {% for asset in assets %}
+            <div id="blog_article" class="row no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative infinite-item">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">{{ article.book.sub_category }}:{{ article.book }}</strong>
-                    <h3 class="mb-0">{{ article.title_text }}</h3>
-                    <div class="mb-1 text-muted"><i id="icon-blog" class="far fa-user"></i><span id="profile-blog">&nbsp;{{ article.written_by }}</span><i id="icon-blog" class="far fa-clock"></i><span id="profile-blog">&nbsp;{{ article.created|date:'Y/n/j' }}</span><i id="icon-blog" class="far fa-comment-dots"></i><span id="profile-blog">&nbsp;12 Comments</span></div>
+                    <strong class="d-inline-block mb-2 text-success">{{ asset.1 }}</strong>
+                    <h3 class="mb-0">
+                        <p class="mb-2">원화: {{ asset.2|floatformat:0|intcomma }}
+                            {% if asset.4 >= 0 %}
+                            <span style="font-size:18px;color:red">(+{{asset.4|floatformat:0|intcomma}})</span>
+                            {% else %}
+                            <span style="font-size:18px;color:blue">({{asset.4|floatformat:0|intcomma}})</span>
+                            {% endif %}
+                        </p>
+                        <p class="mb-2">미화: {{ asset.3|floatformat:2|intcomma }}
+                            {% if asset.5 >= 0 %}
+                            <span style="font-size:18px;color:red">(+{{asset.5|floatformat:2|intcomma}})</span>
+                            {% else %}
+                            <span style="font-size:18px;color:blue">({{asset.5|floatformat:2|intcomma}})</span>
+                            {% endif %}
+                        </p>
+                        <p class="mb-2">한국주식:</p>
+                        <p class="mb-2">미국주식:</p>
+                    </h3>
+                    <div class="mb-1 text-muted"><i id="icon-blog" class="far fa-user"></i><span id="profile-blog">&nbsp;Busy Angel</span><i id="icon-blog" class="far fa-clock"></i><span id="profile-blog">&nbsp;{{ asset.0 }}</span><i id="icon-blog" class="far fa-comment-dots"></i><span id="profile-blog">&nbsp;12 Comments</span></div>
                     <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                     <a href="#" type="button" class="btn btn-sm btn-outline-dark stretched-link" style="width:90px;margin-top:18px;border-radius:15px">더 보기</a>
                 </div>
                 <div id="blog_article_thumbnail" class="col-auto d-none d-lg-block">
-                    <div id="thumbnail_img" style="background-image:url('{{article.title_photo.url}}')"></div>
+                    {% if asset.title_photo.url == '/media/img/blog/no_pic.jpg' %}
+                    <div id="thumbnail_img" style="background-image:url('/static/img/blog/no_pic.jpg')"></div>
+                    {% else %}
+                    <div id="thumbnail_img" style="background-image:url('{{asset.title_photo.url}}')"></div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
+
+            </div>
+            {% if assets.has_next %}
+            <a class="infinite-more-link" href="?page={{ assets.next_page_number }}">더 보기</a>
+            {% endif %}
+            <span class="loading" style="display:none;">
+                Loading...
+            </span>
         </div>
         <div class="col-sm-4" style="padding-left:20px;padding-right:20px">
+            <div class="sidebar_item mb-4" style="padding:20px;background-color:ivory">
+                <h4 class="sidebar_title">Admin Window</h4>
+                <a href="" class="btn btn-danger mb-2">로그 추가</a><br>
+                <a href="{% url 'add_cash' %}" class="btn btn-danger mb-2">캐시플로우</a>
+                <a href="{% url 'add_exchange' %}" class="btn btn-danger mb-2">환전</a><br>
+                <a href="{% url 'add_stock' %}" class="btn btn-success mb-2">거래등록</a><br>
+                <a href="{% url 'data_refresh' %}" class="btn btn-warning mb-2">데이터 갱신</a><br>
+                <span style="font-size:12px">
+                    <!--
+                today:{{today}}<br>
+                nextday:{{nextday}}<br>
+                {{today_stamp}}<br>
+                {{stamp_after_day}}<br>
+                {% for d in deposits %}
+                {{d.date|date:'U'}}//{{d.cash_krw}}//{{d.cash_usd}}<br>
+                {% endfor %}<br>
+                {% for d in deposits %}
+                    {{x}}<br>
+                AA{{d}}AA<br>{% endfor %}
+                    현재날짜//전회날짜//원화입금//미화입금//원화차이//미화차이//i<br>
+                    {% for a in asset_list_in_group %}
+                    {{a.0}}//{{a.7}}//{{a.2}}//{{a.3}}//{{a.4}}//{{a.5}}//{{a.6}}<br>
+                    {% endfor %}<br>
+                    --<br>
+                    {% for x in px %}
+                    {{ x.date }}//{{ x.cash_krw }}
+                    {% endfor %}<br>
+                    y={{y}}<br>
+                    z={{z}}<br>-->
+                    {% for a in asset_list_in_group %}
+                    {{a}}<br>
+                    {% endfor %}====***
+                    <!--{{re}}<br>
+                    {% for w in assets_all %}
+                    {{w}}<br>
+                    {% endfor %}<br>
+                    {{kkk}}<br>---<br>
+                    asset_list_in_group<br>
+                    {{asset_list_in_group}}<br>--<br>
+                    asset_list_in_group_rev<br>
+                    {{asset_list_in_group_reverse}}-->
+                    {% for s in stock_assets_krw %}
+                    {{s}}<br>
+                    {% endfor %}
+                </span>
+            </div>
             <div class="sidebar_item mb-4" style="padding:20px">
                 <h4 class="sidebar_title">Search</h4>
                 <form>
@@ -33,7 +121,8 @@
                 <h4 class="sidebar_title">Category</h4>
                 <ul>
                     <li>General</li>
-                    <li>Life</li>
+                    <li>{{pvarray}}</li>
+                    <li>{{pvarray_ref}}</li>
                 </ul>
             </div>
             <div class="sidebar_item mb-4" style="padding:20px">
@@ -60,4 +149,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        onBeforePageLoad: function () {
+            $('.loading').show();
+        },
+        onAfterPageLoad: function ($items) {
+            $('.loading').hide();
+        }
+    });
+</script>
+
 {% endblock %}

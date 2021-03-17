@@ -6,5 +6,6 @@ from django.conf.urls.static import static
 from .views import *
 
 urlpatterns = [
-    path('upload-csv/', AssetUpload, name="asset_upload"),
+    path('upload-csv/', upload_csv, name="upload_csv"),
+    path('read-csv/', ReadCSV, name="read"),
 ]

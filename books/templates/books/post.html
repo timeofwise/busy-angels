@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<section id="hero" style="background-image: url('/static/img/pexels-{{rand}}.jpg');">
+    <div class="container">
+        <div class="row" style="height:90px"></div>
+        <div class="row">
+            <div class="col-md-3 d-none d-md-block blog-text">
+                <p>카테고리</p>
+                <ul>
+                    <li class="btn btn-outline-light blog-category">경제/경영</li><br>
+                    <li class="btn btn-outline-light blog-category">인문</li><br>
+                    <li class="btn btn-outline-light blog-category">역사</li><br>
+                    <li class="btn btn-outline-light blog-category">과학/기술</li><br>
+                </ul>
+            </div>
+            <div class="col-md-9 blog-text">
+                <p class="quote">“동해물과 백두산이 마르고 닳도록 하느님이 보우하사”</p>
+                <div class="scrollmenu">
+                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row blog-nav">
+                <div class="col pt-2">
+                    <center>
+                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-clipboard-list blog-nav-icon" style=""></i>
+                        </button><br>
+                        <span style="font-size:10px;color:white;font-weight:300">카테고리</span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                        </ul>
+                    </center>
+                </div>
+                <div class="col pt-2">
+                    <center>
+                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-hashtag blog-nav-icon" style=""></i>
+                        </button><br>
+                        <span style="font-size:10px;color:white;font-weight:300">관련태그</span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                        </ul>
+                    </center>
+                </div>
+                <div class="col pt-2">
+                    <center>
+                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-comment-dots blog-nav-icon" style=""></i>
+                        </button><br>
+                        <span style="font-size:10px;color:white;font-weight:300">최근댓글</span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                        </ul>
+                    </center>
+                </div>
+                <div class="col pt-2">
+                    <center>
+                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user blog-nav-icon" style=""></i>
+                        </button><br>
+                        <span style="font-size:10px;color:white;font-weight:300">마이페이지</span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                        </ul>
+                    </center>
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

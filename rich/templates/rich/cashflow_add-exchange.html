@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}환전내역 등록{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="height:70px!important"></div>
+    <div class="row">
+        <form action="" method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <p><label for="id_date">Date:</label> <input type="text" name="date" required="" id="id_date"></p>
+            <p><label for="id_cash_krw">Cash krw:</label> <input type="number" name="cash_krw" value="0" required="" id="id_cash_krw"></p>
+            <p><label for="id_cash_usd">Cash usd:</label> <input type="number" name="cash_usd" value="0" step="0.01" required="" id="id_cash_usd"></p>
+            <input type="hidden" class="" value="6" name="io">
+            <input type="submit" class="btn btn-primary" value="등록">
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#id_date").datepicker();
+    });
+</script>
+{% endblock %}

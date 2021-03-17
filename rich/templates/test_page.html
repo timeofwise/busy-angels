@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} - Busy Angels</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<h2>Entries_page:</h2>
+{% load endless %}
+
+{% paginate entries %}
+{% for entry in entries %}
+        {{entry.date}}<br>
+{% endfor %}
+{% show_more %}
+</body>
+</html>

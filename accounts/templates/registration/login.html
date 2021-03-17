@@ -1,0 +1,51 @@
+{% extends 'auth.html' %}
+{% block title %}로그인 -{% endblock %}
+
+{% block content %}
+<section id="hero" style="background-image: url('/static/img/auth/auth-1.jpg');">
+    <div class="modal fade show" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="false" style="display:block">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel" style="color:#290C60;font-weight:300">로그인</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {{ form.username.errors }}
+                                        <label for="id_username" style="font-weight:300">ID:</label>
+                                    </td>
+                                    <td>
+                                        {{ form.username }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form.password.errors }}
+                                        <label for="id_password" style="font-weight:300">Password:</label>
+                                    </td>
+                                    <td>
+                                        {{ form.password }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <a href="{% url 'register' %}" class="btn btn-secondary" style="float:left;font-weight:300">댓글 서비스를 위한 간편 ID 등록</a>
+                            <input class="btn btn-primary" type="submit" value="로그인" style="float:right;font-weight:300">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
