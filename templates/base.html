@@ -75,6 +75,13 @@
             <a id="sidebar_menu" class="nav-link" href="{% url 'login' %}">로그인</a>
         </li>
         {% endif %}
+        {% if user.is_authenticated %}
+            {% if user.get_username == 'Busy_Angel' %}
+            <li>
+                <a id="sidebar_menu" class="nav-link" href="{% url 'my_storage' %}">학습 창고(Private)</a>
+            </li>
+            {% endif %}
+        {% endif %}
     </ul>
 </nav>
 {% block content %}

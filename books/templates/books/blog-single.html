@@ -10,9 +10,12 @@
             <div class="col-md-3 d-none d-md-block blog-text">
                 <div>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'books' %}" class="bread-side">책과 함께</a></li>
-                        </ol>
+                    <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'books' %}" class="bread-side">책과 함께</a></li>
+                    {% for a in article %}
+                        <li class="breadcrumb-item active" aria-current="page">{{a.title_text}}</li>
+                    {% endfor %}
+                    </ol>
                     </nav>
                     <hr>
                 </div>
@@ -30,44 +33,37 @@
                 <div>
                     <p>나의 메뉴</p>
                     <ul>
-                        <li class="btn btn-outline-light blog-category" data-bs-toggle="modal" data-bs-target="#post">글쓰기</li><br>
+                        <li class="btn btn-outline-light blog-category"><a href="" class="non-deco">글 수정</a></li><br>
+                        <li class="btn btn-outline-light blog-category"><a href="" class="non-deco">글 삭제</a></li><br>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-9 blog-text">
-                <p class="quote">“동해물과 백두산이 마르고 닳도록 하느님이 보우하사”</p>
-                <div class="scrollmenu">
-                    {% for article in articles %}
-                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 22rem;height:35vh;background-color:rgb(255,255,255,0.8)!important">
-                        <div class="card-header" style="background-color:rgb(0,0,0,0.05)!important">#과학/기술 #교양</div>
-                        <div class="card-body">
+            <div class="col-md-9 blog-text" style="overflow:scroll!important">
+                {% for a in article %}
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-12 col-sm-8" style="border-radius:20px;background-color:rgb(0,0,0,0.6);overflow:hidden!important;">
                             <div class="row">
-                                <div class="col-3">
-                                    <img src="{{article.book.cover.url}}" style="width:100%;padding-top:8px;display:inline">
+                                <div class="col-5 col-lg-4" style="height:30vh;overflow:hidden">
+                                    <img src="{{ a.book.cover.url }}" style="display:inline;height:120%;position:relative;top:50%;left:-10%;transform:translate(0%, -50%);">
                                 </div>
-                                <div class="col-9" style="padding-left:2px!important">
-                                    <h5 class="card-title">{{article.book}}</h5>
-                                    <div style="height:120px!important">
-                                        <p class="card-text card-custom">{{article.sub_title}}</p>
-                                        <a href="{{ article.get_absolute_url_articles }}">들어가기</a>
-                                    </div>
+                                <div class="d-flex col-7 col-lg-8 mt-3 mb-3 flex-column" style="text-shadow:none!important;">
+                                    {{a.title_text}}
+                                    <hr>
+                                    {{a.sub_title}}
+                                    <span class="mt-auto" style="font-size:14px">
+                                        <hr>
+                                        저: {{a.book.author}}, 역: {{a.book.translator}}, 『{{a.book}}』, {{a.book.publisher}}
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-transparent" style="color:#8C8D92!important"><i class="far fa-clock"></i>&nbsp;{{article.time_diff}}</div>
                     </div>
-                    {% endfor %}
-                    <!--
-                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;height:40vh;background-color:rgb(255,255,255,0.8)!important">
-                        <div class="card-header" style="background-color:rgb(0,0,0,0.05)!important">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
-                            <p class="card-text card-custom">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <img src="{% static 'img/blog/greatest_show.jpg' %}" style="height:10vh;display:inline">
+                    <div class="row mb-5">
+                        <div class="col pt-3 pb-3" style="border-radius:20px;background-color:rgb(0,0,0,0.6);overflow:hidden!important;text-shadow:none!important;">
+                            {{a.body|safe}}
                         </div>
                     </div>
-                    -->
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="row blog-nav">
@@ -122,27 +118,4 @@
         </div>
     </div>
 </section>
-
-<!-- Modal -->
-<div class="modal fade" id="post" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">카테고리 선택</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <center>
-              <a href="{% url 'add-book' %}" class="btn btn-primary mt-2 mb-2">책 등록하기</a><br>
-              <a href="{% url 'add-post' %}" class="btn btn-primary mt-2 mb-2">포스트 등록하기</a><br>
-              <a href="" class="btn btn-primary mt-2 mb-2">스크랩 등록하기</a><br>
-              <a href="" class="btn btn-primary mt-2 mb-2">기타</a>
-          </center>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}

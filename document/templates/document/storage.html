@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<section id="hero" style="background-image: url('/static/img/pexels-{{rand}}.jpg');">
+    <div class="container">
+        <div class="row" style="height:90px"></div>
+        <div class="row">
+            <a href="{% url 'add_storage' %}" class="btn btn-outline-light" style="width:120px">추가하기</a>
+        </div>
+        <div class="row">
+            <div class="col mt-4">
+                <table class="table storage-text" style="background-color:rgb(0,0,0,0.3)">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>구분</td>
+                            <td>타이틀</td>
+                            <td>세부</td>
+                            <td>URL</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in scraps %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ s.classify }}</td>
+                            <td>{{ s.title }}</td>
+                            <td>{{ s.desc }}</td>
+                            <td><a href="{{s.url}}" style="text-decoration:none;color:ivory">{{ s.url }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

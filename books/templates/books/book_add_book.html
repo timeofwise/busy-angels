@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<section id="hero" style="background-image: url('/static/img/pexels-25.jpg');">
+    <div class="container">
+        <div class="row" style="height:90px"></div>
+        <div class="row">
+            <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <table class="table table-borderless storage-text" style="background-color:rgb(0,0,0,0.3)">
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>입력</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{ form.name.errors }}
+                                <label for="id_name">제목:</label>
+                            </td>
+                            <td>
+                                {{ form.name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.cover.errors }}
+                                <label for="id_cover">Cover:</label>
+                            </td>
+                            <td>
+                                {{ form.cover }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.author.errors }}
+                                <label for="id_author">저자:</label>
+                            </td>
+                            <td>
+                                {{ form.author }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.sub_category.errors }}
+                                <label for="id_sub_category">카테고리:</label>
+                            </td>
+                            <td>
+                                {{ form.sub_category }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.slug.errors }}
+                                <label for="id_slug">Slug(Tag):</label>
+                            </td>
+                            <td>
+                                {{ form.slug }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" class="btn btn-primary" value="추가하기">
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

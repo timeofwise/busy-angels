@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from django_summernote.admin import SummernoteModelAdmin
+
 
 # Register your models here.
 
@@ -24,7 +26,8 @@ class BookAdmin(admin.ModelAdmin):
 
 admin.site.register(Book, BookAdmin)
 
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(SummernoteModelAdmin):
+    summernote_fields = ('body',)
     list_display = ['id', 'title_text', 'sub_title', 'title_photo', 'written_by', 'slug', 'created']
     list_editable = ['title_text', 'sub_title', 'title_photo', 'slug']
     ordering = ['-created']

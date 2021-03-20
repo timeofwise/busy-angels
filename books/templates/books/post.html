@@ -3,105 +3,70 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<section id="hero" style="background-image: url('/static/img/pexels-{{rand}}.jpg');">
-    <div class="container">
+<section id="hero" style="background-image: url('/static/img/pexels-{{rand}}.jpg');background-attachment:fixed">
+    <div class="container" style="overflow:scroll!important;height:95vh!important;">
         <div class="row" style="height:90px"></div>
         <div class="row">
-            <div class="col-md-3 d-none d-md-block blog-text">
-                <p>카테고리</p>
-                <ul>
-                    <li class="btn btn-outline-light blog-category">경제/경영</li><br>
-                    <li class="btn btn-outline-light blog-category">인문</li><br>
-                    <li class="btn btn-outline-light blog-category">역사</li><br>
-                    <li class="btn btn-outline-light blog-category">과학/기술</li><br>
-                </ul>
+            <div class="col">
+                <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+                    <table class="table storage-text" style="background-color:rgb(0,0,0,0.3)">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>입력</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>{{ form.book.errors }}<label for="id_book">Book:</label></td>
+                                <td>{{ form.book }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.title_text.errors }}<label for="id_title_text">Title text:</label></td>
+                                <td><input class="form-control" type="text" name="title_text" maxlength="50" required="" id="id_title_text"></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.sub_title.errors }}<label for="id_sub_title">Sub title:</label></td>
+                                <td><input class="form-control" type="text" name="sub_title" maxlength="100" required="" id="id_sub_title"></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.title_photo.errors }}<label for="id_title_photo">Title photo:</label></td>
+                                <td>{{ form.title_photo }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.written_by.errors }}<label for="id_written_by">Written_by:</label></td>
+                                <td>{{ form.written_by }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.slug.errors }}<label for="id_slug">Slug:</label></td>
+                                <td><input type="text" name="slug" maxlength="50" required="" id="id_slug"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <label for="id_body" class="storage-text">Body:</label>
+                    <!--{{ form.body }}-->
+                    <textarea name="body" cols="40" rows="10" id="id_body" hidden="true" style="display: none;"></textarea>
+                    <script>
+                        var settings_id_body = {"width": "100%", "height": 480, "lang": "en-US", "toolbar": [["style", ["style"]], ["font", ["bold", "italic", "underline", "superscript", "subscript", "strikethrough", "clear"]], ["fontname", ["fontname"]], ["fontsize", ["fontsize"]], ["color", ["color"]], ["para", ["ul", "ol", "paragraph"]], ["height", ["height"]], ["table", ["table"]], ["insert", ["link", "picture", "video", "hr"]], ["view", ["fullscreen", "codeview"]], ["help", ["help"]]], "url": {"language": "/static/summernote/lang/summernote-en-US.min.js", "upload_attachment": "/summernote/upload_attachment/"}};
+                    </script>
+                    <style>
+                        iframe.note-fullscreen {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%!important;
+                            height: 100vh!important;
+                            z-index: 4000;
+                        }
+                    </style>
+                    <div class="summernote-div" cols="40" rows="10" width="100%" height="480">
+                        <iframe id="id_body_iframe" src="/summernote/editor/id_body/" frameborder="0" width="100%" height="480" style="height: 480px;"></iframe>
+                    </div>
+                    <input type="submit" class="btn btn-success mt-2" value="포스트">
+                </form>
             </div>
-            <div class="col-md-9 blog-text">
-                <p class="quote">“동해물과 백두산이 마르고 닳도록 하느님이 보우하사”</p>
-                <div class="scrollmenu">
-                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-
-                    <div class="card text-dark bg-light mb-3 scroll" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row blog-nav">
-                <div class="col pt-2">
-                    <center>
-                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-clipboard-list blog-nav-icon" style=""></i>
-                        </button><br>
-                        <span style="font-size:10px;color:white;font-weight:300">카테고리</span>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </center>
-                </div>
-                <div class="col pt-2">
-                    <center>
-                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-hashtag blog-nav-icon" style=""></i>
-                        </button><br>
-                        <span style="font-size:10px;color:white;font-weight:300">관련태그</span>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </center>
-                </div>
-                <div class="col pt-2">
-                    <center>
-                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-comment-dots blog-nav-icon" style=""></i>
-                        </button><br>
-                        <span style="font-size:10px;color:white;font-weight:300">최근댓글</span>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </center>
-                </div>
-                <div class="col pt-2">
-                    <center>
-                        <button class="blog-nav-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user blog-nav-icon" style=""></i>
-                        </button><br>
-                        <span style="font-size:10px;color:white;font-weight:300">마이페이지</span>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </center>
-                </div>
         </div>
     </div>
 </section>

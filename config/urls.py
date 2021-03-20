@@ -22,8 +22,10 @@ from .views import *
 
 urlpatterns = [
     path('', include('home.urls')),
+    path('my-storage/', include('document.urls')),
     path('registration/', include('accounts.urls')),
     path('assets/', include('rich.urls')),
     path('books/', include('books.urls')),
+    path('summernote/', include('django_summernote.urls')),
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
