@@ -8,10 +8,12 @@ from django.urls import reverse_lazy
 import fnmatch, os, random
 from datetime import datetime, timedelta, date
 
+#number_files = len(fnmatch.filter(os.listdir('static/img/'), '*.jpg'))
+number_files = len(fnmatch.filter(os.listdir('/home/busyangels/busy-angels/static/img/'), '*.jpg'))
+
 def books(request):
     today = datetime.today()
     articles = Article.objects.all()
-    number_files = len(fnmatch.filter(os.listdir('static/img/'), '*.jpg'))
     rand = random.randint(1, number_files)
 
     return render(request, 'books/blog.html', {
@@ -36,7 +38,6 @@ class AddBook(CreateView):
 
 
 def post(request):
-    number_files = len(fnmatch.filter(os.listdir('static/img/'), '*.jpg'))
     rand = random.randint(1, number_files)
 
     if request.method == "POST":
@@ -52,7 +53,6 @@ def post(request):
 
 
 def blogSingle(request, article_slug):
-    number_files = len(fnmatch.filter(os.listdir('static/img/'), '*.jpg'))
     rand = random.randint(1, number_files)
 
     template = 'books/blog-single.html'
