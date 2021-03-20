@@ -47,6 +47,33 @@
                         </tr>
                         <tr>
                             <td>
+                                {{ form.translated.errors }}
+                                <label for="id_translated">번역본:</label>
+                            </td>
+                            <td>
+                                {{ form.translated }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.translator.errors }}
+                                <label for="id_translator">역자:</label>
+                            </td>
+                            <td>
+                                {{ form.translator }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.publisher.errors }}
+                                <label for="id_publisher">출판사:</label>
+                            </td>
+                            <td>
+                                {{ form.publisher }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 {{ form.sub_category.errors }}
                                 <label for="id_sub_category">카테고리:</label>
                             </td>

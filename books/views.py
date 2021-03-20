@@ -22,19 +22,18 @@ def books(request):
         'today':today,
     })
 
-class AddBook(CreateView):
-    model = Book
-    fields = [
-        'name',
-        'cover',
-        'author',
-        'translator',
-        'publisher',
-        'sub_category',
-        'slug',
-    ]
-    success_url = reverse_lazy('books')
-    template_name_suffix = '_add_book'
+def AddBook(request):
+
+    if request.method == "POST":
+        book_form = BookForm(request.POST, request.FILES)
+        if book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.save()
+            #return render(request, 'books/blog.html', {'form': article, 'rand':rand})
+            return redirect('books')
+    else:
+        book_form = BookForm()
+    return render(request, 'books/book_add_book.html', {'form':book_form})
 
 
 def post(request):

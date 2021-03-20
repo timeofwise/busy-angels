@@ -24,6 +24,7 @@ class Book(models.Model):
     name = models.CharField(max_length=40, null=True)
     cover = models.ImageField(upload_to='img/books/cover-img', default='img/books/cover-img/no_image.png', null=True)
     author = models.CharField(max_length=25, null=True)
+    translated = models.BooleanField(default=False, null=True)
     translator = models.CharField(max_length=15, null=True)
     publisher = models.CharField(max_length=15, null=True)
     sub_category = models.ForeignKey(Subcategory, on_delete=models.PROTECT, null=True)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article
+from .models import Article, Book
 from django_summernote.widgets import SummernoteWidget
 
 class ArticleForm(forms.ModelForm):
@@ -17,3 +17,17 @@ class ArticleForm(forms.ModelForm):
         widgets = {
             'body': SummernoteWidget(),
         }
+
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = [
+            'name',
+            'cover',
+            'author',
+            'translated',
+            'translator',
+            'publisher',
+            'sub_category',
+            'slug',
+        ]
