@@ -1,12 +1,9 @@
 body {
     font-family: 'Noto Sans KR', sans-serif !important;
-    min-height:100vh !important;
-    min-height: -webkit-fill-available !important;
+    height: calc(var(--vh, 1vh) * 100);
+    margin: 0 auto;
 }
 
-html {
-    height: -webkit-fill-available !important;
-}
 
 #navbar {
     background-color: transparent !important;
