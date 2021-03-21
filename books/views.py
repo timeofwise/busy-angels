@@ -8,8 +8,8 @@ from django.urls import reverse_lazy
 import fnmatch, os, random
 from datetime import datetime, timedelta, date
 
-number_files = len(fnmatch.filter(os.listdir('static/img/'), '*.jpg'))
-#number_files = len(fnmatch.filter(os.listdir('/home/busyangels/busy-angels/static/img/'), '*.jpg'))
+#number_files = len(fnmatch.filter(os.listdir('static/img/'), '*.jpg'))
+number_files = len(fnmatch.filter(os.listdir('/home/busyangels/busy-angels/static/img/'), '*.jpg'))
 
 def books(request):
     today = datetime.today()
