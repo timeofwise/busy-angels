@@ -1,7 +1,9 @@
+html {
+    height:100% !important;
+}
 body {
     font-family: 'Noto Sans KR', sans-serif !important;
-    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(–vh, 1vh) * 100);
+    height: 100% !important;
 }
 
 
@@ -182,7 +184,7 @@ a.article:hover {
 
 #hero {
     width: 100% !important;
-    height: 100vh !important;
+    height: 100% !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
