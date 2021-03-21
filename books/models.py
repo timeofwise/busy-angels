@@ -79,7 +79,7 @@ class Article(models.Model):
         return self.title_text
 
 class Scrap(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.PROTECT, null=True)
+    article = models.ForeignKey(Article, on_delete=models.PROTECT, related_name="scrap", null=True)
     quote = models.TextField(null=True)
     comment = models.TextField(null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)

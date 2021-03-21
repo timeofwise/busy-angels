@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article, Book
+from .models import Article, Book, Scrap
 from django_summernote.widgets import SummernoteWidget
 
 class ArticleForm(forms.ModelForm):
@@ -31,3 +31,16 @@ class BookForm(forms.ModelForm):
             'sub_category',
             'slug',
         ]
+
+class ScrapForm(forms.ModelForm):
+    class Meta:
+        model = Scrap
+        fields = [
+            'article',
+            'quote',
+            'comment',
+        ]
+        widgets = {
+            'comment': SummernoteWidget(),
+        }
+

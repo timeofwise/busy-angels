@@ -41,10 +41,10 @@
             <div class="col-md-9 blog-text" style="overflow:scroll!important">
                 {% for a in article %}
                     <div class="row justify-content-center mb-5">
-                        <div class="col-12 col-sm-8" style="border-radius:20px;background-color:rgb(0,0,0,0.6);overflow:hidden!important;">
+                        <div class="col-12 col-sm-8" style="border-radius:20px;background-color:rgb(0,0,0,0.7);overflow:hidden!important;">
                             <div class="row">
                                 <div class="col-5 col-lg-4" style="height:30vh;overflow:hidden">
-                                    <img src="{{ a.book.cover.url }}" style="display:inline;height:120%;position:relative;top:50%;left:-10%;transform:translate(0%, -50%);">
+                                    <img src="{{ a.book.cover.url }}" style="display:inline;height:120%;position:relative;top:50%;left:-10%;transform:translate(0%, -50%);font-weight:400!important">
                                 </div>
                                 <div class="d-flex col-7 col-lg-8 mt-3 mb-3 flex-column" style="text-shadow:none!important;">
                                     {{a.title_text}}
@@ -59,10 +59,26 @@
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col pt-3 pb-3" style="border-radius:20px;background-color:rgb(0,0,0,0.6);overflow:hidden!important;text-shadow:none!important;">
+                        <div id="body_content" class="col pt-3 pb-3" style="border-radius:20px;background-color:rgb(0,0,0,0.7);overflow:hidden!important;text-shadow:none!important;line-height:2em!important;font-weight:400!important">
                             {{a.body|safe}}
                         </div>
                     </div>
+                    {% for s in a.scrap.all %}
+                        <div class="row mb-5">
+                            <div id="body_content" class="col pt-3 pb-3" style="border-radius:20px;background-color:rgb(0,0,0,0.7);overflow:hidden!important;text-shadow:none!important;line-height:2em!important;font-weight:400!important">
+                                <span style="font-size:24px;">#{{forloop.counter}}</span>
+                                <center><i class="fas fa-quote-left mb-3" style="color:ivory!important"></i></center>
+                                <div class="row">
+                                    <div class="col-1 col-lg-2"></div>
+                                    <div class="col-10 col-lg-8" style="color:ivory!important">{{s.quote}}</div>
+                                    <div class="col-1 col-lg-2"></div>
+                                </div>
+                                <center><i class="fas fa-quote-right mt-3" style="color:ivory!important"></i></center>
+                                <hr>
+                                {{s.comment|safe}}<br>
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% endfor %}
             </div>
         </div>

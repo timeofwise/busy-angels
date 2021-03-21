@@ -33,3 +33,10 @@ class ArticleAdmin(SummernoteModelAdmin):
     ordering = ['-created']
 
 admin.site.register(Article, ArticleAdmin)
+
+class ScrapAdmin(SummernoteModelAdmin):
+    summernote_fields = ('comment',)
+    list_display = ['id', 'article','created']
+    ordering = ['-created']
+
+admin.site.register(Scrap, ScrapAdmin)
