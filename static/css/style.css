@@ -1,9 +1,5 @@
-html {
-    height:100% !important;
-}
 body {
     font-family: 'Noto Sans KR', sans-serif !important;
-    height: 100% !important;
 }
 
 
@@ -185,13 +181,11 @@ a.article:hover {
 #hero {
     width: 100% !important;
     height: 100% !important;
-    min-height: 100% !important;
-    overflow-y: hidden !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
     position: relative;
-    margin-bottom: -90px;
+    margin-bottom: 0px;
 }
 
 #hero .hero-container {
