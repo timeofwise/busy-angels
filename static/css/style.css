@@ -1,7 +1,7 @@
 body {
     font-family: 'Noto Sans KR', sans-serif !important;
-    height: calc(var(--vh, 1vh) * 100);
-    margin: 0 auto;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(–vh, 1vh) * 100);
 }
 
 
