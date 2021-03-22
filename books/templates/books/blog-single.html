@@ -66,7 +66,10 @@
                     {% for s in a.scrap.all %}
                         <div class="row mb-5">
                             <div id="body_content" class="col pt-3 pb-3" style="border-radius:20px;background-color:rgb(0,0,0,0.7);overflow:hidden!important;text-shadow:none!important;line-height:2em!important;font-weight:400!important">
-                                <span style="font-size:24px;">#{{forloop.counter}}</span>
+                                <div>
+                                    <span style="font-size:24px;">#{{forloop.counter}}</span>
+                                    <a href="" style="text-decoration:none"><i class="far fa-heart like" style="float:right;color:rgb(255,255,255,0.7)"></i></a>
+                                </div>
                                 <center><i class="fas fa-quote-left mb-3" style="color:ivory!important"></i></center>
                                 <div class="row">
                                     <div class="col-1 col-lg-2"></div>

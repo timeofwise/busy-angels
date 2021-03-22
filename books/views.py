@@ -13,7 +13,7 @@ number_files = len(fnmatch.filter(os.listdir('/home/busyangels/busy-angels/stati
 
 def books(request):
     today = datetime.today()
-    articles = Article.objects.all()
+    articles = Article.objects.all().order_by('-created')
     rand = random.randint(1, number_files)
 
     return render(request, 'books/blog.html', {

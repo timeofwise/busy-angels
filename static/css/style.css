@@ -321,7 +321,7 @@ a.article:hover {
     color:white;
     font-weight:300;
     text-shadow: 0px 0 4px black !important;
-    height:75vh;
+    height:80vh;
     font-family: 'Noto Serif KR', serif !important;
 }
 
@@ -417,6 +417,10 @@ div.scroll {
 .non-deco {
     text-decoration:none !important;
     color:ivory;
+}
+
+.like:hover {
+    color:rgb(209,31,54,0.7)!important;
 }
 
 /* ---------------------------------------------------

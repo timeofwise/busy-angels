@@ -42,6 +42,7 @@ class Article(models.Model):
     written_by = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
     book = models.ForeignKey(Book, on_delete=models.PROTECT, null=True)
     body = models.TextField(null=True)
+    hits = models.IntegerField(default=0, null=True)
 
 
     # slug
@@ -83,3 +84,7 @@ class Scrap(models.Model):
     quote = models.TextField(null=True)
     comment = models.TextField(null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
+
+class LikeScrap(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="user", null=True)
+    like = models.IntegerField(default=1, null=True)
